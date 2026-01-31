@@ -1,3 +1,26 @@
+/*MIT License
+
+Copyright (c) 2026 kelzzzz @ github
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,10 +61,10 @@ void get_time() {
 //format LEVEL:func:line [dd/mm/yyyy : hh:mm:s] msg
 void ezlog(LOG_LEVEL level, const char * funct, int line, const char * msg, ...){
     va_list args;
-    va_start(args,msg);
+    va_start(args, msg);
         if (level < 0 || level >= LOG_COUNT) return;
         if(ez_log_is_ansi){
-            printf("%s",colors[level]);
+            printf("%s", colors[level]);
         }
         printf("%s:", type[level]);
         printf("%s:", funct);
@@ -49,7 +72,7 @@ void ezlog(LOG_LEVEL level, const char * funct, int line, const char * msg, ...)
         print_time();
         vfprintf(stdout, msg, args);
         if(ez_log_is_ansi){
-            printf("%s\n",log_ansi_reset);
+            printf("%s\n", log_ansi_reset);
         }
     va_end(args);
 }
